@@ -4,10 +4,13 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+import ChoiceModal from './ChoiceModal';
 
 class App extends React.Component {
   state = {
-    options: []
+    options: [],
+    modalIsOpen: false,
+    randomOption: undefined
   }
 
   addOption = (option) => {
@@ -33,7 +36,11 @@ class App extends React.Component {
     const { options } = this.state;
     const randomNumber = Math.floor(Math.random() * options.length);
     const randomOption = options[randomNumber];
-    alert(randomOption);
+    this.setState({ modalIsOpen: true, randomOption });
+  }
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
   }
 
   componentDidMount() {
@@ -64,6 +71,11 @@ class App extends React.Component {
       <div>
         <Header subtitle={subtitle} />
         <Action length={this.state.options.length} makeDecision={this.handleDecision} />
+        <ChoiceModal
+          modalIsOpen={this.state.modalIsOpen}
+          closeModal={this.closeModal}
+          randomOption={this.state.randomOption}
+        />
         <Options options={this.state.options} handleDelete={this.handleDelete} handleDeleteAll={this.handleDeleteAll} />
         <AddOption addOption={this.addOption} />
       </div>
