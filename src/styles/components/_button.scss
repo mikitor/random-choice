@@ -1,0 +1,38 @@
+.main-button {
+  background-color: $main-color;
+  color: white;
+  border: none;
+  border-bottom: 0.6rem solid darken($main-color, 10%);
+  font-weight: bold;
+  font-size: $l-size;
+  width: 100%;
+  padding: 2.5rem;
+  margin-bottom: $m-size;
+}
+
+.main-button:disabled {
+  background-color: darken($main-color, 10%);
+  color: darken(white, 10%);
+  border-bottom: 0.6rem solid darken($main-color, 20%);
+}
+
+.button {
+  background-color: $main-color;
+  color: white;
+  border: none;
+  border-bottom: 0.3rem solid darken($main-color, 10%);
+  padding: $s-size;
+  font-weight: 500;
+}
+
+.button--delete {
+  background-color: transparent;
+  color: $off-white;
+  border: none;
+}
+
+@media (min-width: $desktop) {
+  .main-button {
+    margin-bottom: $xl-size;
+  }
+}
