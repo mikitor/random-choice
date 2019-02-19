@@ -11,41 +11,41 @@ class App extends React.Component {
     options: [],
     modalIsOpen: false,
     randomOption: undefined
-  }
+  };
 
-  addOption = (option) => {
+  addOption = option => {
     if (!option) {
       return 'Enter valid value to add item';
     }
 
     this.setState(prev => ({ options: prev.options.concat(option) }));
-  }
+  };
 
-  handleDelete = (e) => {
+  handleDelete = e => {
     const { id } = e.target;
     this.setState(prevState => {
       return { options: prevState.options.filter((option, index) => index != id) };
-    })
-  }
+    });
+  };
 
   handleDeleteAll = () => {
     this.setState({ options: [] });
-  }
+  };
 
   handleDecision = () => {
     const { options } = this.state;
     const randomNumber = Math.floor(Math.random() * options.length);
     const randomOption = options[randomNumber];
     this.setState({ modalIsOpen: true, randomOption });
-  }
+  };
 
   closeModal = () => {
     this.setState({ modalIsOpen: false });
-  }
+  };
 
   componentDidMount() {
     try {
-      const options = JSON.parse(localStorage.getItem("options"));
+      const options = JSON.parse(localStorage.getItem('options'));
       if (this.state.options !== options && options) {
         this.setState({ options });
       }
@@ -57,7 +57,7 @@ class App extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.options.length !== this.state.options.length) {
       const { options } = this.state;
-      localStorage.setItem("options", JSON.stringify(options));
+      localStorage.setItem('options', JSON.stringify(options));
     }
   }
 
@@ -70,14 +70,22 @@ class App extends React.Component {
     return (
       <div>
         <Header subtitle={subtitle} />
-        <Action length={this.state.options.length} makeDecision={this.handleDecision} />
         <ChoiceModal
           modalIsOpen={this.state.modalIsOpen}
           closeModal={this.closeModal}
           randomOption={this.state.randomOption}
         />
-        <Options options={this.state.options} handleDelete={this.handleDelete} handleDeleteAll={this.handleDeleteAll} />
-        <AddOption addOption={this.addOption} />
+        <div className="container">
+          <Action length={this.state.options.length} makeDecision={this.handleDecision} />
+          <div className="main">
+            <Options
+              options={this.state.options}
+              handleDelete={this.handleDelete}
+              handleDeleteAll={this.handleDeleteAll}
+            />
+            <AddOption addOption={this.addOption} />
+          </div>
+        </div>
       </div>
     );
   }
