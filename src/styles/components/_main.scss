@@ -1,0 +1,32 @@
+.main-header {
+  background-color: $blue;
+  color: $off-white;
+  padding: $m-size;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header-title {
+  margin: 0;
+}
+
+.main {
+  background-color: $light-blue;
+  margin-bottom: $m-size;
+}
+
+.main-message {
+  color: $off-white;
+  text-align: center;
+  padding: $l-size;
+  margin: 0;
+  border-bottom: 1px solid $off-white;
+}
+
+@media (min-width: $desktop) {
+  .main {
+    margin-bottom: $xl-size;
+  }
+}
