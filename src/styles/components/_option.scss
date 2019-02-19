@@ -1,0 +1,13 @@
+.option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $m-size;
+  border-bottom: solid 1px darken($off-white, 20%);
+}
+
+.option-title {
+  color: white;
+  font-size: $m-size;
+  word-break: break-all;
+}
