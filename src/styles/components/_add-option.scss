@@ -1,0 +1,31 @@
+input[type='text'] {
+  background-color: $dark-blue;
+  color: $off-white;
+  border: 0;
+  border-bottom: solid 4px $off-black;
+  flex: 1;
+  padding: $m-size;
+  margin-bottom: $m-size;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: $m-size;
+}
+
+.error {
+  padding: 0 $m-size;
+  color: $off-white;
+  font-style: italic;
+}
+
+@media (min-width: $desktop) {
+  form {
+    flex-direction: row;
+  }
+  input[type='text'] {
+    margin-right: $m-size;
+    margin-bottom: 0;
+  }
+}
