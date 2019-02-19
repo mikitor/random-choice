@@ -1,0 +1,30 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  min-width: 15rem;
+  max-width: 20rem;
+  min-height: 15rem;
+  background-color: $light-blue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  text-align: center;
+  padding: $l-size;
+  outline: none;
+}
+
+.modal__title {
+  font-size: $m-size;
+  font-weight: bold;
+}
+
+.modal__text {
+  word-break: break-all;
+}
